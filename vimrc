@@ -1,48 +1,59 @@
 let g:env = toupper(substitute(system('uname'), '\n', '', ''))
 " Configure PATH based on MacPort
 if g:env =~ 'DARWIN'
-    set pythonthreedll=/opt/local/Library/Frameworks/Python.framework/Versions/3.7/Python
-    set rtp+=/opt/local/share/fzf/vim
+    setglobal pythonthreedll=/opt/local/Library/Frameworks/Python.framework/Versions/3.7/Python
+    setglobal rtp+=/opt/local/share/fzf/vim
     if (has("termguicolors"))
-        set termguicolors
+        setglobal termguicolors
     endif
 else
-    set rtp+=~/.fzf
+    setglobal rtp+=~/.fzf
 endif
 
-set backupdir=~/.vim/tmp//,.
-set directory=~/.vim/tmp//,.
-set mouse=a
-syntax on
-set number
-filetype plugin indent on
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+setglobal smartcase
+setglobal incsearch
+setglobal tags=./tags;
+setglobal include=
+setglobal path=.,,
 
-autocmd bufnewfile,bufread *.jsx set filetype=javascript.javascriptreact
+setglobal backupdir=~/.vim/tmp//,.
+setglobal directory=~/.vim/tmp//,.
+setglobal mouse=a
+setglobal backspace=2
+syntax on
+setglobal number
+filetype plugin indent on
+setglobal tabstop=4
+setglobal softtabstop=4
+setglobal shiftwidth=4
+setglobal expandtab
+
+setglobal laststatus=2
+setglobal showtabline=2
+if empty(&g:statusline)
+  setglobal statusline=[%n]\ %<%.99f\ %y%h%w%m%r%=%-14.(%l,%c%V%)\ %P
+endif
+setglobal titlestring=%{v:progname}\ %{tolower(empty(v:servername)?'':'--servername\ '.v:servername.'\ ')}%{fnamemodify(getcwd(),':~')}%{exists('$SSH_TTY')?'\ <'.hostname().'>':''}
+setglobal iconstring=%{tolower(empty(v:servername)?v:progname\ :\ v:servername)}%{exists('$SSH_TTY')?'@'.hostname():''}
+
+autocmd bufnewfile,bufread *.jsx setglobal filetype=javascript.javascriptreact
 
 colorscheme one
 
-"set path+=**
-"set wildignore+=**/node_modules/** 
-"set wildmenu
-"set wildmode=longest:full,full
+"setglobal wildignore+=**/node_modules/** 
+"setglobal wildmenu
+"setglobal wildmode=longest:full,full
 
 "let b:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
 "let g:prettier#config#single_quote = 'false'
-
-
-
 
 
 "" bindings
 let mapleader=" "
 "nnoremap <leader>f :find *
 
-nmap <leader>d :set background=dark<CR>
-nmap <leader>l :set background=light<CR>
+nmap <leader>d :setglobal background=dark<CR>
+nmap <leader>l :setglobal background=light<CR>
 
 nmap ; :Buffers<CR>
 nmap <Leader>f :Files<CR>
@@ -56,8 +67,3 @@ nmap <Leader>y :YcmCompleter
 nmap <silent> gd :YcmCompleter GoTo<CR>
 nmap <silent> gr :YcmCompleter GoToReferences<CR>
 
-"let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"

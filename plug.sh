@@ -23,12 +23,8 @@ git clone https://github.com/mileszs/ack.vim  pack/mileszs/start/ack
 mkdir -p pack/junegunn/start
 git clone https://github.com/junegunn/fzf.vim pack/junegunn/start/fzf
 
-mkdir -p pack/SirVer/start
-git clone https://github.com/sirver/UltiSnips pack/SirVer/start/UltiSnips
-mkdir ftdetect
-ln -s pack/SirVer/start/UltiSnips/ftdetect/* ftdetect/
-mkdir -p pack/honza/start
-git clone https://github.com/honza/vim-snippets pack/honza/start/vim-snippets
+mkdir -p pack/junegunn/goyo
+git clone https://github.com/junegunn/goyo.vim pack/junegunn/start/goyo
 
 mkdir -p pack/ycm-core/start
 git clone https://github.com/ycm-core/YouCompleteMe pack/ycm-core/start/YouCompleteMe
