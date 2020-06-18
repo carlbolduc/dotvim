@@ -8,6 +8,9 @@ git clone https://github.com/rakr/vim-one pack/rakr/start/vim-one
 mkdir -p pack/yuezk/start
 git clone https://github.com/yuezk/vim-js pack/yuezk/start/vim-js
 
+mkdir -p pack/lumiliet/start
+git clone https://github.com/lumiliet/vim-twig pack/lumiliet/start/vim-twig
+
 mkdir -p pack/MaxMEllon/start
 git clone https://github.com/MaxMEllon/vim-jsx-pretty pack/MaxMEllon/start/vim-jsx-pretty
 

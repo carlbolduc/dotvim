@@ -1,48 +1,59 @@
 let g:env = toupper(substitute(system('uname'), '\n', '', ''))
 " Configure PATH based on MacPort
 if g:env =~ 'DARWIN'
-    setglobal pythonthreedll=/opt/local/Library/Frameworks/Python.framework/Versions/3.7/Python
-    setglobal rtp+=/opt/local/share/fzf/vim
+    set pythonthreedll=/opt/local/Library/Frameworks/Python.framework/Versions/3.7/Python
+    set rtp+=/opt/local/share/fzf/vim
     if (has("termguicolors"))
-        setglobal termguicolors
+        set termguicolors
     endif
 else
-    setglobal rtp+=~/.fzf
+    set rtp+=~/.fzf
 endif
 
-setglobal smartcase
-setglobal incsearch
-setglobal tags=./tags;
-setglobal include=
-setglobal path=.,,
+set smartcase
+set incsearch
+set tags=./tags;
+set include=
+set path=.,,
 
-setglobal backupdir=~/.vim/tmp//,.
-setglobal directory=~/.vim/tmp//,.
-setglobal mouse=a
-setglobal backspace=2
+set backupdir=~/.vim/tmp//,.
+set directory=~/.vim/tmp//,.
+set mouse=a
+set backspace=2
 syntax on
-setglobal number
+set number
 filetype plugin indent on
-setglobal tabstop=4
-setglobal softtabstop=4
-setglobal shiftwidth=4
-setglobal expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 
-setglobal laststatus=2
-setglobal showtabline=2
-if empty(&g:statusline)
-  setglobal statusline=[%n]\ %<%.99f\ %y%h%w%m%r%=%-14.(%l,%c%V%)\ %P
-endif
-setglobal titlestring=%{v:progname}\ %{tolower(empty(v:servername)?'':'--servername\ '.v:servername.'\ ')}%{fnamemodify(getcwd(),':~')}%{exists('$SSH_TTY')?'\ <'.hostname().'>':''}
-setglobal iconstring=%{tolower(empty(v:servername)?v:progname\ :\ v:servername)}%{exists('$SSH_TTY')?'@'.hostname():''}
+set statusline =
+" Buffer number
+set statusline +=[%n]
+" File description
+set statusline +=%f\ %h%m%r%w
+" Filetype
+set statusline +=%y                                                  
+" Name of the current function (needs taglist.vim)
+"set statusline +=\ [Fun(%{Tlist_Get_Tagname_By_Line()})]
+set statusline +=\ [Fun(%{tagbar#currenttag('%s','')})]
+" Name of the current branch (needs fugitive.vim)
+set statusline +=\ %{fugitive#statusline()}
+" Date of the last time the file was saved
+set statusline +=\ %{strftime(\"[%d/%m/%y\ %T]\",getftime(expand(\"%:p\")))} 
+" Total number of lines in the file
+set statusline +=%=%-10L
+" Line, column and percentage
+set statusline +=%=%-14.(%l,%c%V%)\ %P
 
-autocmd bufnewfile,bufread *.jsx setglobal filetype=javascript.javascriptreact
+autocmd bufnewfile,bufread *.jsx set filetype=javascript.javascriptreact
 
 colorscheme one
 
-"setglobal wildignore+=**/node_modules/** 
-"setglobal wildmenu
-"setglobal wildmode=longest:full,full
+"set wildignore+=**/node_modules/** 
+"set wildmenu
+"set wildmode=longest:full,full
 
 "let b:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
 "let g:prettier#config#single_quote = 'false'
@@ -52,8 +63,8 @@ colorscheme one
 let mapleader=" "
 "nnoremap <leader>f :find *
 
-nmap <leader>d :setglobal background=dark<CR>
-nmap <leader>l :setglobal background=light<CR>
+nmap <leader>d :set background=dark<CR>
+nmap <leader>l :set background=light<CR>
 
 nmap ; :Buffers<CR>
 nmap <Leader>f :Files<CR>
