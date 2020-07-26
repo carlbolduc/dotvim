@@ -1,3 +1,4 @@
+let $JAVA_TOOL_OPTIONS="-javaagent:/Users/carl/.vim/vendor/lombok.jar -Xbootclasspath/a:/Users/carl/.vim/vendor/lombok.jar"
 let g:env = toupper(substitute(system('uname'), '\n', '', ''))
 " Configure PATH based on MacPort
 if g:env =~ 'DARWIN'
