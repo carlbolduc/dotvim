@@ -3,13 +3,14 @@ let g:env = toupper(substitute(system('uname'), '\n', '', ''))
 " Configure PATH based on MacPort
 if g:env =~ 'DARWIN'
     set pythonthreedll=/opt/local/Library/Frameworks/Python.framework/Versions/3.7/Python
-    set rtp+=/opt/local/share/fzf/vim
+    set rtp+=~/.fzf
     if (has("termguicolors"))
         set termguicolors
     endif
 else
     set rtp+=~/.fzf
 endif
+
 
 set smartcase
 set incsearch
@@ -24,9 +25,9 @@ set backspace=2
 syntax on
 set number
 filetype plugin indent on
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 set statusline =
