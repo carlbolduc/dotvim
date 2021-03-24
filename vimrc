@@ -17,16 +17,17 @@ set tags=./tags;
 set include=
 set path=.,,
 
-set backupdir=~/.vim/tmp//,.
-set directory=~/.vim/tmp//,.
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 set mouse=a
 set backspace=2
 syntax on
 set number
 filetype plugin indent on
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 set statusline =
@@ -59,6 +60,10 @@ colorscheme one
 "let b:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
 "let g:prettier#config#single_quote = 'false'
 
+set completeopt+=popup
+set completepopup=height:10,width:60,highlight:Pmenu,border:off
+"set completepopup=height:15,width:60,border:off,highlight:PMenuSbar
+"set previewpopup=height:10,width:60,highlight:PMenuSbar
 
 "" bindings
 let mapleader=" "

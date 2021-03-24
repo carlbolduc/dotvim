@@ -19,6 +19,7 @@ git clone https://tpope.io/vim/fugitive.git pack/tpope/start/fugitive
 #vim -u NONE -c "helptags pack/tpope/start/fugitive/doc" -c q
 git clone https://github.com/tpope/vim-vinegar.git pack/tpope/start/vim-vinegar
 git clone https://github.com/tpope/vim-surround pack/tpope/start/vim-surround
+git clone https://github.com/tpope/vim-dadbod pack/tpope/start/vim-dadbod
 
 mkdir -p pack/mileszs/start
 git clone https://github.com/mileszs/ack.vim  pack/mileszs/start/ack
